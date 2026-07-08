@@ -1,70 +1,42 @@
 import Link from 'next/link';
+import { Container } from '@/components/common/Container';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const links = {
-    company: [
-      { name: 'About', href: '/about' },
-    ],
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-    ],
-  };
+  const links = [
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms', href: '/terms' },
+  ];
 
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
-          <div className="space-y-3">
-            <Link href="/" className="text-xl font-bold tracking-tight">
-              Headshots
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              Professional headshots for modern professionals.
-            </p>
-          </div>
+    <footer className="border-t bg-background" role="contentinfo">
+      <Container>
+        <div className="flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
+          <Link
+            href="/"
+            className="text-lg font-bold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            Headshots
+          </Link>
 
-          <div>
-            <h3 className="mb-3 text-sm font-semibold">Company</h3>
-            <ul className="space-y-2">
-              {links.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-6" aria-label="Footer navigation">
+            {links.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-          <div>
-            <h3 className="mb-3 text-sm font-semibold">Legal</h3>
-            <ul className="space-y-2">
-              {links.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-8 border-t pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            &copy; {currentYear} Headshots. All rights reserved.
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Headshots. All rights reserved.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

@@ -4,12 +4,27 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  as?: 'section' | 'div' | 'article';
+  variant?: 'default' | 'sm' | 'lg' | 'none';
 }
 
-export function Section({ children, className, id }: SectionProps) {
+const sectionVariants = {
+  none: '',
+  sm: 'py-8 md:py-12',
+  default: 'py-16 md:py-24',
+  lg: 'py-24 md:py-32',
+};
+
+export function Section({
+  children,
+  className,
+  id,
+  as: Component = 'section',
+  variant = 'default',
+}: SectionProps) {
   return (
-    <section id={id} className={cn('py-16 md:py-24', className)}>
+    <Component id={id} className={cn(sectionVariants[variant], className)}>
       {children}
-    </section>
+    </Component>
   );
 }
