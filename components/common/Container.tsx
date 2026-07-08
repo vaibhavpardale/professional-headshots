@@ -3,13 +3,12 @@ import { cn } from '@/lib/utils';
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
-  as?: 'div' | 'main' | 'section' | 'article' | 'aside';
 }
 
-export function Container({ children, className, as: Component = 'div' }: ContainerProps) {
+export function Container({ children, className }: ContainerProps) {
   return (
-    <Component className={cn('container mx-auto w-full px-4 sm:px-6 lg:px-8', className)}>
+    <div className={cn('container mx-auto px-4', className)}>
       {children}
-    </Component>
+    </div>
   );
 }
