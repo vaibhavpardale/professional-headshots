@@ -14,11 +14,15 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="border-t bg-background" role="contentinfo">
+      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="space-y-3">
-            <Link href="/" className="text-xl font-bold tracking-tight">
+            <Link
+              href="/"
+              className="text-xl font-bold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              aria-label="Headshots - Home"
+            >
               Headshots
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -27,13 +31,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold">Company</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-3 text-sm font-semibold" id="footer-company">
+              Company
+            </h3>
+            <ul className="space-y-2" aria-labelledby="footer-company">
               {links.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                   >
                     {link.name}
                   </Link>
@@ -43,13 +49,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold">Legal</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-3 text-sm font-semibold" id="footer-legal">
+              Legal
+            </h3>
+            <ul className="space-y-2" aria-labelledby="footer-legal">
               {links.legal.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                   >
                     {link.name}
                   </Link>
